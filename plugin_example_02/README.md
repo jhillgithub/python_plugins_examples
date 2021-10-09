@@ -72,6 +72,17 @@ if __name__ == '__main__':
     cli()
 ```
 
+## Creating your own external plugin
+
+The external plugin has its own setup.cgf and setup.py (the setup.py is just to allow it to be installed in editable mode).
+
+The trick to getting this to work with the main app is to register an entry point as a `myapp_plugins` entrypoint. These external plugins can then live anywhere (other repos, other folders, etc). They just need installed in order for the `myapp` application to register and use them.
+
+## Notes
+
+This framework doesn't enforce rules for the api. It passes through a lot of stuff by using the fire cli. It also doesn't really do a depenedency check in the main app for internal plugins. This example only uses python fire. Any other dependency for a real plugin would need added to the dependency list.
+
+
 ## Next Steps
 
 1. Create a `__main__.py` file for the main application.
